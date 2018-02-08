@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange() {
+        this.setState({username: this.state.username});
+        this.setState({password: this.state.password});
+        alert('Username: '+this.state.username+' and '+ 'Password: '+this.state.password);
+
+    }
+    handleSubmit() {
+        alert('Username: '+this.state.username+' and '+ 'Password: '+this.state.password);
+        
+    }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div className="App">
+          <label><b>Username</b></label>
+          <input type="text" value={this.state.username} placeholder="Enter Username" name="uname" required/>
+          <br/>
+          <label><b>Password</b></label>
+          <input type="password" value={this.state.password} placeholder="Enter Password" name="psw" required/>
+          <br/>
+          <button type="submit" className="button">Login</button>
+          <button type="button" className="button">Cancel</button>
+        </div>
     );
   }
 }
